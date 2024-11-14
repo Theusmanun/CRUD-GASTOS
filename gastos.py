@@ -86,10 +86,26 @@ def linha_horizontal(cor):
 
 def menu_inicial():
     print(cor.CIANO + "=" *55 + cor.RESET)
-    print(cor.VERMELHO + " ---->>> BEM VINDO AO ECOFIN <<<---- ")
+    print(cor.VERMELHO + " ---->>> BEM VINDO AO ECOFIN! <<<---- ")
     print("          1 - DESPESAS ")
     print("          2 - SAIR ")
     print(cor.CIANO + "=" *55 + cor.RESET)
+
+def verificar_limite_orcamento(limite):
+    despesas = carregar_despesas()
+    total = 0
+    
+    for despesa in despesas:
+        valor_limpo = despesa['valor'].replace("R$", "").replace(",", ".").strip()
+        total += float(valor_limpo)
+    
+    print(f"\n💲 TOTAL DE DESPESAS ATÉ AGORA: R$ {total:.2f}")
+    
+    if total > limite:
+        print("⚠️ ATENÇÃO: VOCÊ ULTRAPASSOU O LIMITE DO SEU ORÇAMENTO!")
+    else:
+        print(f"VOCÊ ESTÁ DENTRO DO SEU LIMITE DE ORÇAMENTO QUE É R$ {limite:.2f}.")
+
 
 def exibir_menu():
 
@@ -99,7 +115,9 @@ def exibir_menu():
     print("3. ATUALIZAR DESPESAS")
     print("4. EXCLUIR DESPESAS")
     print("5. LISTAR UMA DESPESA")
-    print("6. VOLTAR AO MENU ANTERIOR")
+    print("6. VERIFICAR LIMITE DE ORÇAMENTO")
+    print("7. VOLTAR AO MENU ANTERIOR")
+
 
 
 
@@ -133,9 +151,13 @@ def main():
                         nome = input("DIGITE O NOME DA DESPESA:\n>>>")
                         buscar_despesa(nome)
                     elif opcao == "6":
+                        limite = float(input("DIGITE O LIMITE DE ORÇAMENTO: R$\n>>>"))
+                        verificar_limite_orcamento(limite)
+                    elif opcao == "7":
                         print("VOLTAR AO MENU ANTERIOR...")
                         sleep(3)
                         break
+                    
                     else:
                         print("😡 OPÇÃO INVÁLIDA. TENTE NOVAMENTE!")
             case 2:
