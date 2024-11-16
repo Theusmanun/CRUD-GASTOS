@@ -26,7 +26,7 @@ def adicionar_despesa(gasto,valor):
 
     with open(arquivo,'w') as f:
         json.dump(despesas, f,indent=4, ensure_ascii=False)
-    print("💲 DESPESA ADICIONADA COM SUCESSO!💲")
+    print("💲 DESPESA ADICIONADA COM SUCESSO!!💲")
 
 def listar_despesa():
     despesas = carregar_despesas()
@@ -45,7 +45,7 @@ def listar_despesa():
             
            
     else:
-        print("💲DESPESA NÃO ENCONTRADA!💲")
+        print("💲DESPESA NÃO ENCONTRADA!!💲")
     
     print(f"\n💲 TOTAL DE DESPESAS: R$ {total:.2f}")
         
@@ -58,7 +58,7 @@ def atualizar_despesa(gasto_antigo, novo_gasto, novo_valor):
             despesa['valor'] = novo_valor
     with open(arquivo,'w') as f:
         json.dump(despesas, f, indent=4,ensure_ascii=False)
-    print("💲DESPESA ATUALIZADA COM SUCESSO!💲")
+    print("💲DESPESA ATUALIZADA COM SUCESSO!!💲")
 
 def excluir_despesa(gasto):
     despesas = carregar_despesas()
@@ -67,7 +67,7 @@ def excluir_despesa(gasto):
             despesas.remove(despesa)
     with open(arquivo, 'w') as f:
         json.dump(despesa, f, indent=4, ensure_ascii=False)
-    print("💲DESPESA EXCLUIDA COM SUCESSO!💲")
+    print("💲DESPESA EXCLUIDA COM SUCESSO!!💲")
 
 def buscar_despesa(gasto):
     despesas = carregar_despesas()
@@ -79,7 +79,7 @@ def buscar_despesa(gasto):
             print(F"Despesa: {despesa['gasto']}, Valor: {despesa['valor']}")
             encontrado = True
     if not encontrado:
-        print("💲DESPESA NÃO ENCONTRADA.💲")
+        print("💲DESPESA NÃO ENCONTRADA!💲")
 
 def linha_horizontal(cor):
     return cor + "=" * 50 + cor ['RESET']
